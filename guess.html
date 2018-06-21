@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+			var  randomNumber;
+			var randomNum;
+			var author;
+		function getNumber(){
+		var numbers=["80","60","40","20"];
+				
+		 randomNum=Math.floor((Math.random()*numbers.length));
+		 randomNumber=numbers[randomNum];			
+		$(".predicorr").text(randomNumber);
+		}
+		
+		$("#gameStarter").on("click",function(){			
+		getNumber(); 
+		$('span').hide();
+		$("#ViewResult").prop("disabled", true);		
+		});
+			
+		$("#ViewResult").on("click",function(){
+		$('span').show();
+		});
+		$("#again").on("click",function(){
+		
+		getNumber(); 
+		$('span').hide();
+		$("#ViewResult").prop("disabled", true);
+		$("#check").prop("disabled", false);
+		$('h2').show();
+		});
+		
+		$("#check").on("click",function(){
+		if(randomNumber==$("#p").val())
+		{
+		
+		$('h2').hide();
+		$("#check").prop("disabled", true);
+		$("#gameStarter").prop("disabled", true);
+		$("#ViewResult").prop("disabled", false);	
+		}
+		else{
+		$("#check").prop("disabled", true);
+		$("#gameStarter").prop("disabled", true);
+		$("#ViewResult").prop("disabled", false);
+		}
+				
+		});
+});
+
+</script>
+<style>
+
+.hide{display:none;}
+.show{display:block;}
+body{
+	background-color:yellow;
+
+}
+h1{
+	color:black;
+	font-family:"Times New Roman";
+}
+
+h2{
+	color:black;
+	font-family:"Times New Roman";
+}
+p{
+		color:black;
+		font-family:"Times New Roman";
+		font-style:italic;
+		font-size:20px;
+		
+
+}
+.numbers{
+	background-color:black;
+	width:33%;
+	margin-right:auto;
+	margin-left:auto;
+	border-color:white;
+	border-style:solid;
+	border-radius:5px;
+	margin-top:20px;
+	padding:20px;
+	height:auto;
+	color:white;
+}
+
+.predicorr{
+font-size:30px;
+
+}
+
+.author{
+font-size:15px;
+font-style:italic;
+}
+
+.main{
+margin:150px 0px 0px 0px;
+}
+</style>
+<html>
+<head>
+
+
+</head>
+
+<body>
+	<div class="container-fluid text-center main" >
+		<h1>
+		Number Prediction game
+
+		</h1>
+			<p> Guess any number in between 20,40,60 or 80
+			</p>
+				<button class="btn btn-default" type="submit" id="gameStarter">Press The Button and start the game</button>
+				<button class="btn btn-default" id="ViewResult">View</button>
+	
+	<div class="numbers ">
+	<span class="predicorr">Hello Predictor</span>
+	
+	</div>
+	<div class="predictor">
+	</br>
+	</br>
+	
+	<input id="p" class="text" required>
+	</br>
+	
+	</br>
+	<button class="btn btn-default" id="check">Predict</button>
+	<button class="btn btn-default" id="again">Play again</button>
+	</div>
+	<h2>If you correct </b> then I will hide</h2>
+	
+	</div>
+
+</body>
